@@ -50,7 +50,7 @@ def ids_in_values(list_with_dict_ids, dick_for_key, dict_for_values):
 def return_all_product_with_category(df_products, df_categories, df_relationships):
     product = dict(map(lambda x: (x.id, x.name), df_products.collect()))
     category = dict(map(lambda x: (x.id, x.name), df_categories.collect()))
-    prod_with_category = map(lambda x: (int(x.id_products), int(x.id_categories)), df_relationships.collect())
+    prod_with_category = map(lambda x: (int(x.id_product), int(x.id_category)), df_relationships.collect())
 
     pre_answer = ids_in_values(prod_with_category, product, category)
     new_keys = set(product.values()) - set(pre_answer.keys())
